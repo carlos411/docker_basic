@@ -1,0 +1,10 @@
+# 容器服務
+services:
+  # 容器片段名稱
+  web:
+    build:
+      # 從現在這個目錄中，依據 Dockerfile 檔來建立映像檔
+      context: .
+    ports:
+      # [host port]:[container port]
+      - "8080:80"
