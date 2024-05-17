@@ -11,6 +11,12 @@ RUN apk add --no-cache \
   vim \
   supervisor
 
+# my_proj.conf 是針對該網站的 nginx 的設定檔，
+# 將 my_proj.conf，複製一份，放到 /etc/nginx/http.d 資料夾裡
+COPY ./sys_config/my_proj.conf /etc/nginx/http.d
+# 在容器中，建立 /var/www/localhost/htdocs/my_proj 資料夾，要放原始碼
+RUN mkdir -p /var/www/localhost/htdocs/my_proj
+
 # supervisord config
 COPY ./sys_config/supervisord.ini /etc/supervisor.d/
 
