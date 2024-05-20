@@ -6,10 +6,14 @@ FROM alpine:${ALPINE_VERSION}
 RUN apk update && apk upgrade
 
 # 安裝 nginx 及 vim，且不要放到快取中，可節省磁碟空間
+# 安裝 PHP 及 PHP-FPM
 RUN apk add --no-cache \
   nginx \
   vim \
-  supervisor
+  supervisor \
+  php83 \
+  php83-common \
+  php83-fpm
 
 # my_proj.conf 是針對該網站的 nginx 的設定檔，
 # 將 my_proj.conf，複製一份，放到 /etc/nginx/http.d 資料夾裡
