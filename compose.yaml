@@ -3,11 +3,11 @@ services:
   # 容器片段名稱
   web:
     build:
-      # 從現在這個目錄中，依據 Dockerfile 檔來建立映像檔
-      context: .
+      # 從 web 目錄中，依據 Dockerfile 檔來建立映像檔
+      context: ./web
     ports:
       # [host port]:[container port]
       - "8080:8000"
     volumes:
-      # [host: 現在這個資料夾] 對應到 [container: /var/www/localhost/htdocs/my_proj]
-      - .:/var/www/localhost/htdocs/my_proj
+      # [host: web 資料夾] 對應到 [container: /var/www/localhost/htdocs/my_proj]
+      - ./web:/var/www/localhost/htdocs/my_proj
