@@ -11,3 +11,16 @@ services:
     volumes:
       # [host: web 資料夾] 對應到 [container: /var/www/localhost/htdocs/my_proj]
       - ./web:/var/www/localhost/htdocs/my_proj
+  db:
+    build:
+      context: ./db
+    ports:
+      - "8806:3306"
+    # 如果容器異常退出，會自動重啟
+    restart: always
+    environment:
+      # 讀取 .env 檔的 MARIADB_ROOT_PASSWORD
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+    volumes:
+      # [host: db/data 資料夾] 對應到 [container: /var/lib/mysql]
+      - ./db/data:/var/lib/mysql
