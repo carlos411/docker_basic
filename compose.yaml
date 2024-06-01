@@ -11,6 +11,9 @@ services:
     volumes:
       # [host: web 資料夾] 對應到 [container: /var/www/localhost/htdocs/my_proj]
       - ./web:/var/www/localhost/htdocs/my_proj
+    networks:
+      # 將此容器加進 my_network 網路
+      my_network:
   db:
     build:
       context: ./db
@@ -24,3 +27,10 @@ services:
     volumes:
       # [host: db/data 資料夾] 對應到 [container: /var/lib/mysql]
       - ./db/data:/var/lib/mysql
+    networks:
+      # 將此容器加進 my_network 網路
+      my_network:
+
+networks:
+  # 自定義網路名稱叫做 my_network
+  my_network:

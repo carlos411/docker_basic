@@ -13,7 +13,9 @@ RUN apk add --no-cache \
   supervisor \
   php83 \
   php83-common \
-  php83-fpm
+  php83-fpm \
+  php83-pdo \
+  php83-pdo_mysql
 
 # my_proj.conf 是針對該網站的 nginx 的設定檔，
 # 將 my_proj.conf，複製一份，放到 /etc/nginx/http.d 資料夾裡
